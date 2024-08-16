@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .stopwatch {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .laps {
+            list-style: none;
+            padding: 0;
+        }
+        .lap {
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stopwatch</h1>
+        <div class="stopwatch">
+            <span id="minutes">00</span>:<span id="seconds">00</span>:<span id="milliseconds">00</span>
+        </div>
+        <div class="buttons">
+            <button id="startStopBtn">Start</button>
+            <button id="resetBtn">Reset</button>
+            <button id="lapBtn">Lap</button>
+        </div>
+        <ul class="laps" id="laps"></ul>
+    </div>
+
+    <script>
+        let startTime, updatedTime, difference, tInterval;
+        let running = false;
+        const minutes = document.getElementById('minutes');
+        const seconds = document.getElementById('seconds');
+        const milliseconds = document.getElementById('milliseconds');
+        const startStopBtn = document.getElementById('startStopBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const lapBtn = document.getElementById('lapBtn');
+        const laps = document.getElementById('laps');
+
+        function startStop() {
+            if (!running) {
+                startTime = new Date().getTime() - difference;
+                tInterval = setInterval(getShowTime, 10);
+                startStopBtn.innerHTML = "Pause";
+                running = true;
+            } else {
+                clearInterval(tInterval);
+                startStopBtn.innerHTML = "Start";
+                running = false;
+            }
+        }
+
+        function reset() {
+            clearInterval(tInterval);
+            difference = 0;
+            running = false;
+            startStopBtn.innerHTML = "Start";
+            minutes.innerHTML = "00";
+            seconds.innerHTML = "00";
+            milliseconds.innerHTML = "00";
+            laps.innerHTML = "";
+        }
+
+        function lap() {
+            if (running) {
+                const lapTime = `${minutes.innerHTML}:${seconds.innerHTML}:${milliseconds.innerHTML}`;
+                const lapItem = document.createElement('li');
+                lapItem.className = 'lap';
+                lapItem.innerHTML = lapTime;
+                laps.appendChild(lapItem);
+            }
+        }
+
+        function getShowTime() {
+            updatedTime = new Date().getTime();
+            difference = updatedTime - startTime;
+
+            const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((difference % (1000 * 60)) / 1000);
+            const ms = Math.floor((difference % 1000) / 10);
+
+            minutes.innerHTML = (m < 10) ? "0" + m : m;
+            seconds.innerHTML = (s < 10) ? "0" + s : s;
+            milliseconds.innerHTML = (ms < 10) ? "0" + ms : ms;
+        }
+
+        startStopBtn.addEventListener('click', startStop);
+        resetBtn.addEventListener('click', reset);
+        lapBtn.addEventListener('click', lap);
+    </script>
+</body>
+</html>

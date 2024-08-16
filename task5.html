@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em;
+            color: #333;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .weather-info {
+            margin-top: 20px;
+        }
+
+        .weather-info p {
+            margin: 5px 0;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather App</h1>
+        <input type="text" id="location" placeholder="Enter city name" />
+        <button onclick="getWeather()">Get Weather</button>
+        <div id="weather-info" class="weather-info"></div>
+    </div>
+
+    <script>
+        const apiKey = '0696284096f596f4c8d509f8ebf1b602'; // Replace with your actual OpenWeatherMap API key
+
+        async function getWeather() {
+            const location = document.getElementById('location').value.trim();
+            const weatherInfo = document.getElementById('weather-info');
+
+            if (!location) {
+                weatherInfo.innerHTML = '<p class="error">Please enter a location.</p>';
+                return;
+            }
+
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(location)}&units=metric&appid=${apiKey}`;
+
+            try {
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    const errorDetails = await response.json();
+                    throw new Error(`Error ${response.status}: ${errorDetails.message || 'Unknown error'}`);
+                }
+
+                const data = await response.json();
+                if (data.cod === 200) {
+                    displayWeather(data);
+                } else {
+                    throw new Error(data.message || 'An error occurred.');
+                }
+            } catch (error) {
+                weatherInfo.innerHTML = `<p class="error">${error.message}</p>`;
+            }
+        }
+
+        function displayWeather(data) {
+            const weatherInfo = document.getElementById('weather-info');
+            const { name, main, weather, wind } = data;
+
+            weatherInfo.innerHTML = `
+                <h2>Weather in ${name}</h2>
+                <p><strong>Temperature:</strong> ${main.temp}°C</p>
+                <p><strong>Weather:</strong> ${weather[0].description}</p>
+                <p><strong>Humidity:</strong> ${main.humidity}%</p>
+                <p><strong>Wind Speed:</strong> ${wind.speed} m/s</p>
+            `;
+        }
+    </script>
+</body>
+</html>

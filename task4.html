@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #f06595);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffe156;
+        }
+
+        .section {
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .home {
+            background: url('background.jpg') no-repeat center center/cover;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            padding: 120px 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .home h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+
+        .profile-pic {
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            border: 5px solid #fff;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            margin-top: 20px;
+        }
+
+        .about {
+            background: linear-gradient(135deg, #6a82fb, #fc5c7d);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('abstract-pattern.png') repeat;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .about-text {
+            flex: 1;
+            max-width: 600px;
+            line-height: 1.8;
+            font-size: 1.15em;
+        }
+
+        .about-text h2 {
+            margin-top: 0;
+            font-size: 2.5em;
+            color: #fff;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-image img {
+            border-radius: 50%;
+            width: 220px;
+            height: 220px;
+            border: 5px solid #fff;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.1);
+            border-color: #ff6b6b;
+        }
+
+        .projects {
+            background: linear-gradient(135deg, #ff9a9e, #fda085);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .projects h2 {
+            margin-top: 0;
+            font-size: 2.5em;
+            color: #fff;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .project {
+            margin: 20px 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: left;
+        }
+
+        .project h3 {
+            color: #333;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #ff6b6b, #f06595);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 -4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="section home">
+        <div class="container">
+            <h1>Welcome to My Portfolio</h1>
+            <img src="C:\Users\shobhit\Pictures\Screenshots\Saved Pictures\shobhitdamwala.jpg"" alt="Profile Picture" class="profile-pic">
+            <p>Hi, I'm Shobhit Damwala, a passionate web developer.</p>
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <div class="container about-content">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>My name is Shobhit Damwala, and I am a dedicated and passionate web developer with a Bachelor of Computer Applications (BCA) degree. I have a strong foundation in computer science principles, and my education has equipped me with a diverse skill set in web development, software engineering, and problem-solving.</p>
+                <p>During my BCA program, I gained proficiency in various programming languages, including HTML, CSS, JavaScript, and Python. I have also developed a keen interest in front-end development, and I enjoy creating visually appealing and user-friendly websites. Additionally, I have hands-on experience with back-end technologies, databases, and version control systems like Git.</p>
+                <p>My journey as a web developer has been fueled by a genuine curiosity and a drive to continuously learn and adapt to new technologies. I thrive in collaborative environments and enjoy working on projects that challenge my creativity and technical skills. I am particularly interested in developing responsive and dynamic web applications that provide seamless user experiences.</p>
+                <p>Beyond my technical expertise, I am a strong communicator and team player. I have successfully completed several projects, both independently and as part of a team, and I am always eager to take on new challenges. My goal is to contribute to innovative projects that make a positive impact and to grow as a professional in the ever-evolving field of web development.</p>
+                <p>Thank you for visiting my portfolio. I look forward to connecting and exploring potential opportunities to collaborate and create amazing web experiences together.</p>
+            </div>
+            <div class="about-image">
+                <img src="C:\Users\shobhit\Pictures\Screenshots\Saved Pictures\shobhitdamwala.jpg"" alt="Profile Picture">
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project">
+                <img src="property-rental.png" alt="Property Rental System" style="width:100%; border-radius: 10px;">
+                <h3>Property Rental System</h3>
+                <p>The Property Rental System is a user-friendly web application designed to streamline the rental process. It allows users to browse and search for rental properties, view detailed property listings, and manage rental applications. The system simplifies property management and enhances the rental experience by providing an efficient platform for both landlords and tenants to interact and complete rental transactions.</p>
+            </div>
+            <div class="project">
+                <img src="online-service.png" alt="Online Service System" style="width:100%; border-radius: 10px;">
+                <h3>Online Service System</h3>
+                <p>The Online Home Services System is a comprehensive platform designed to offer a wide array of home services, much like Urban Company. It connects users with professional service providers for various needs, including cleaning, plumbing, electrical repairs, and more. Through the platform, users can easily browse available services, book appointments, and select providers based on ratings and reviews. The system features a streamlined booking process, real-time tracking of service progress, and secure payment options to ensure a hassle-free experience. Additionally, it offers features like personalized recommendations, service guarantees, and customer support, making it a go-to solution for managing home maintenance and improvement needs efficiently.</p>
+            </div>
+            <div class="project">
+                <img src="college-management.png" alt="Online College Management System" style="width:100%; border-radius: 10px;">
+                <h3>Online College Management System</h3>
+                <p>The Online College Management System is a sophisticated digital platform designed to streamline the administration of educational institutions. This system offers a centralized solution for managing academic processes, including student enrollment, course scheduling, grade tracking, and faculty management. With user-friendly interfaces and real-time data access, it enhances operational efficiency and supports effective communication between students, faculty, and administration. Key features include automated attendance tracking, online grade reporting, and a robust scheduling tool, all designed to simplify college management and improve the overall educational experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Shobhit Damwala. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
